@@ -24,3 +24,13 @@ Install the necessary dependencies using the following:
 
 ```bash
 pip install torch pandas numpy scikit-learn ta-lib matplotlib
+
+Model Overview
+
+The model consists of a simple feed-forward neural network with the following architecture:
+
+    Input Layer: 6 features (Open, Close, High, Low, MA10, RSI).
+    Hidden Layer: 6 units, with a Tanh activation function.
+    Output Layer: 2 units (representing the probability of the stock price going up or down), using a Softmax activation.
+
+The model uses the CrossEntropyLoss criterion, which is suitable for classification problems with categorical outputs, and the Adam optimizer for training.
