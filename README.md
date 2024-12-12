@@ -20,11 +20,6 @@ This project uses the following Python libraries:
 - `ta-lib` (optional) - For technical analysis indicators (e.g., RSI).
 - `matplotlib` (optional) - For plotting results.
 
-Install the necessary dependencies using the following:
-
-```bash
-pip install torch pandas numpy scikit-learn ta-lib matplotlib
-
 Model Overview
 
 The model consists of a simple feed-forward neural network with the following architecture:
@@ -34,3 +29,34 @@ The model consists of a simple feed-forward neural network with the following ar
     Output Layer: 2 units (representing the probability of the stock price going up or down), using a Softmax activation.
 
 The model uses the CrossEntropyLoss criterion, which is suitable for classification problems with categorical outputs, and the Adam optimizer for training.
+Data Preprocessing
+
+The dataset used for training consists of historical stock price data with the following steps:
+
+Data Cleaning: Remove dollar signs and commas from the numerical columns (Open, Close, High, Low).
+Feature Engineering:
+    Moving Average (MA10): A 10-day rolling average of the closing price.
+    RSI (Relative Strength Index): A momentum indicator used to measure the speed and change of price movements.
+Scaling: The data is scaled using StandardScaler to normalize the features.
+Label Creation: A binary classification label is created based on whether today's closing price is higher than tomorrow's
+
+Evaluation Results:
+
+Accuracy: 71.46%
+Precision: 0.7228
+Recall: 0.7878
+F1 Score: 0.7539
+
+
+How to Run the Code
+
+Clone this repository:
+
+    git clone https://github.com/yourusername/stock-price-prediction.git
+    cd stock-price-prediction
+
+Prepare your dataset and place it in the appropriate folder (if applicable).
+
+Run the notebook or Python script:
+
+    python train_model.py
